@@ -34,10 +34,6 @@ import { Container, TitleBox, Form, FormBox, StationSelects, Distance } from './
 import noSelectedLine from '../../assets/images/no_selected_line.png';
 import STATUS_CODE from '../../constants/statusCode';
 
-interface StationInLine extends APIReturnTypeStation {
-  distance?: number;
-}
-
 const LINE_BEFORE_FETCH: APIReturnTypeLine[] = []; // FETCH 이전과 이후의 빈 배열을 구분
 const STATION_BEFORE_FETCH: APIReturnTypeStation[] = [];
 
@@ -45,7 +41,7 @@ const SectionPage = ({ setIsLoading }: PageProps) => {
   const [selectedLineId, setSelectedLineId] = useState<number>(-1);
 
   const [stations, setStations, fetchStations] = useStations(STATION_BEFORE_FETCH);
-  const [lines, setLines, fetchLines, fetchLine, addLine, deleteLine] = useLines(LINE_BEFORE_FETCH);
+  const [lines, setLines, fetchLines, fetchLine] = useLines(LINE_BEFORE_FETCH);
   const [addSection, deleteSection] = useSections();
 
   const [formOpen, setFormOpen] = useState<boolean>(false);

@@ -7,7 +7,7 @@ interface SectionGraphProps {
 
 const SectionGraph = ({ line }: SectionGraphProps) => (
   <Container borderColor={line.color}>
-    <LineTag backgroundColor={line.color}>{line.name}</LineTag>
+    <LineTag borderColor={line.color}>{line.name}</LineTag>
     {line.stations.map(({ id, name }) => (
       <StationDot key={id} borderColor={line.color}>
         <span>{name}</span>

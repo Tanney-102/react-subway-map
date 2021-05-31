@@ -41,10 +41,10 @@ const App = () => {
           <TextLogo height="2rem" />
         </Link>
         <NavBar>
+          <NavLink to={PATH.MAP}>전체보기</NavLink>
           <NavLink to={PATH.STATIONS}>역관리</NavLink>
           <NavLink to={PATH.LINES}>노선관리</NavLink>
           <NavLink to={PATH.SECTIONS}>구간관리</NavLink>
-          <NavLink to={PATH.MAP}>전체보기</NavLink>
           {userContext?.isLoggedIn ? (
             <button
               onClick={() => {
@@ -71,7 +71,7 @@ const App = () => {
           />
           <Route
             exact
-            path={[PATH.STATIONS, PATH.ROOT]}
+            path={PATH.STATIONS}
             render={() => <StationPage setIsLoading={setIsLoading} />}
           />
           <Route exact path={PATH.LINES} render={() => <LinePage setIsLoading={setIsLoading} />} />
@@ -80,7 +80,11 @@ const App = () => {
             path={PATH.SECTIONS}
             render={() => <SectionPage setIsLoading={setIsLoading} />}
           />
-          <Route exact path={PATH.MAP} render={() => <MapPage setIsLoading={setIsLoading} />} />
+          <Route
+            exact
+            path={[PATH.MAP, PATH.ROOT]}
+            render={() => <MapPage setIsLoading={setIsLoading} />}
+          />
           <Redirect to={PATH.ROOT} />
         </Switch>
       </Main>
